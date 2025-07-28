@@ -41,7 +41,15 @@ const displayError = (error) => {
 }
 
 const displayData = () => {
-  tubeListContainer.innerHTML = tubeData.map(line => {
+  // Sort lines alphabetically by name
+  const sortedData = tubeData.sort((a, b) => a.name.localeCompare(b.name))
+  
+  // Update last updated time
+  const now = new Date()
+  const timeString = now.toLocaleTimeString()
+  document.getElementById('last-updated-time').textContent = timeString
+  
+  tubeListContainer.innerHTML = sortedData.map(line => {
     // Map line names to CSS classes
     const lineColorMap = {
       'Bakerloo': 'bakerloo',
@@ -96,38 +104,14 @@ const toggleLine = (element) => {
 // * Events
 button.addEventListener('click', getData)
 
+// Load data when page loads and set up auto-refresh
+document.addEventListener('DOMContentLoaded', () => {
+  getData()
+  
+  // Auto-refresh every 5 minutes (300,000 milliseconds)
+  setInterval(() => {
+    console.log('Auto-refreshing tube status...')
+    getData()
+  }, 300000)
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const user = {
-//   username: 'JoeBloggs',
-//   email: 'JoeBloggs@email.com',
-//   password: 'pass123'
-// }
-
-// const stringifiedObject = JSON.stringify(user)
-
-// const parsedData = JSON.parse(stringifiedObject)

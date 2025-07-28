@@ -34,6 +34,21 @@ h1 {
     font-size: 24px;
 }
 
+.auto-refresh-info {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.auto-refresh-info p {
+    margin: 5px 0;
+}
+
+.last-updated {
+    font-style: italic;
+}
+
 .tube-list {
     margin-bottom: 30px;
 }
